@@ -1,9 +1,20 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
-setlocale(LC_ALL, "pt_BR", "pt_BR.iso-8859-1", "pt_BR.utf-8", "portuguese");
-setlocale(LC_TIME, 'ptb', 'pt_BR', 'portuguese-brazil', 'bra', 'brazil', 'pt_BR.utf-8', 'pt_BR.iso-8859-1', 'br');
 
 return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Environment
+    |--------------------------------------------------------------------------
+    |
+    | This value determines the "environment" your application is currently
+    | running in. This may determine how you prefer to configure various
+    | services your application utilizes. Set this in your ".env" file.
+    |
+    */
+
+    //'env' => env('APP_ENV', 'production'),
+    'env' => env('APP_ENV', 'local'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +53,7 @@ return [
     |
     */
 
-    'timezone' => 'America/Sao_Paulo',
+    'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +66,7 @@ return [
     |
     */
 
-    'locale' => 'pt_BR',
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -68,7 +79,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'pt_BR',
+    'fallback_locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -81,7 +92,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY', 'PuAf9vxcQ2HTJzCXxuPtPRQXSRaodrbk'),
+    'key' => env('APP_KEY', 'PntpABdApV4QSDGvjxWjKBoLsbzRvhtz'),
 
     'cipher' => 'AES-256-CBC',
 
@@ -98,22 +109,7 @@ return [
     |
     */
 
-    'log' => 'daily',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Version Number of the App
-    |--------------------------------------------------------------------------
-    |
-    | Here come the version of the app for loging and features of the project.
-    | Get tue concept from github changelog of all commit and push to the
-    | server and bring some kind of documentation in there.
-    |
-    | Available Settings: "single", "daily", "syslog", "errorlog"
-    |
-    */
-
-    'app_version' => '0.1',
+    'log' => env('APP_LOG', 'single'),
 
     /*
     |--------------------------------------------------------------------------
@@ -129,20 +125,13 @@ return [
     'providers' => [
 
         /*
-         * Development Service Providers...
-         */
-        // Barryvdh\Debugbar\ServiceProvider::class,
-
-        /*
          * Laravel Framework Service Providers...
          */
-        Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
         Illuminate\Cache\CacheServiceProvider::class,
         Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
-        Illuminate\Routing\ControllerServiceProvider::class,
         Illuminate\Cookie\CookieServiceProvider::class,
         Illuminate\Database\DatabaseServiceProvider::class,
         Illuminate\Encryption\EncryptionServiceProvider::class,
@@ -159,12 +148,13 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Illuminate\Html\HtmlServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
@@ -212,7 +202,6 @@ return [
         'Artisan'       => Illuminate\Support\Facades\Artisan::class,
         'Auth'          => Illuminate\Support\Facades\Auth::class,
         'Blade'         => Illuminate\Support\Facades\Blade::class,
-        'Bus'           => Illuminate\Support\Facades\Bus::class,
         'Cache'         => Illuminate\Support\Facades\Cache::class,
         'Config'        => Illuminate\Support\Facades\Config::class,
         'Cookie'        => Illuminate\Support\Facades\Cookie::class,
@@ -221,9 +210,8 @@ return [
         'Eloquent'      => Illuminate\Database\Eloquent\Model::class,
         'Event'         => Illuminate\Support\Facades\Event::class,
         'File'          => Illuminate\Support\Facades\File::class,
+        'Gate'          => Illuminate\Support\Facades\Gate::class,
         'Hash'          => Illuminate\Support\Facades\Hash::class,
-        'Input'         => Illuminate\Support\Facades\Input::class,
-        'Inspiring'     => Illuminate\Foundation\Inspiring::class,
         'Lang'          => Illuminate\Support\Facades\Lang::class,
         'Log'           => Illuminate\Support\Facades\Log::class,
         'Mail'          => Illuminate\Support\Facades\Mail::class,
@@ -237,12 +225,11 @@ return [
         'Schema'        => Illuminate\Support\Facades\Schema::class,
         'Session'       => Illuminate\Support\Facades\Session::class,
         'Storage'       => Illuminate\Support\Facades\Storage::class,
-        'Str'           => Illuminate\Support\Str::class,
         'URL'           => Illuminate\Support\Facades\URL::class,
         'Validator'     => Illuminate\Support\Facades\Validator::class,
         'View'          => Illuminate\Support\Facades\View::class,
-        'Form'          => Illuminate\Html\FormFacade::class,
-        'Html'          => Illuminate\Html\HtmlFacade::class,
+        'Form'          => Collective\Html\FormFacade::class,
+        'Html'          => Collective\Html\HtmlFacade::class,
         'Entrust'       => Zizaco\Entrust\EntrustFacade::class,
         'PusherManager' => Vinkla\Pusher\Facades\Pusher::class,
         //'Image'         => Intervention\Image\Facades\Image::class,

@@ -6,9 +6,8 @@
     "type": "project",
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.1.*",
+        "laravel/framework": "5.2.*",
         "laravel/elixir": "^1.0@dev",
-        "illuminate/html": "^5.0@dev",
         "raveren/kint": "^1.0@dev",
         "zizaco/entrust": "dev-master",
         "vinkla/pusher": "~1.0",
@@ -23,7 +22,8 @@
         "torann/geoip": "^0.2.0@dev",
         "laravel/envoy": "~1.0",
         "alexpechkarev/google-geocoder": "dev-master",
-        "doctrine/dbal": "^2.6@dev"
+        "doctrine/dbal": "^2.6@dev",
+        "laravelcollective/html": "^5.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
