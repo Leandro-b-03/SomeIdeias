@@ -1,7 +1,7 @@
 {
     "name": "SomeIdeias/Main-Page",
     "description": "The SomeIdeias Main-Page.",
-    "keywords": ["SomeIdeias", "Some", ],
+    "keywords": ["SomeIdeias", "Some", "Ideias"],
     "license": "MIT",
     "type": "project",
     "require": {
