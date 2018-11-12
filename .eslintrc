@@ -1,0 +1,20 @@
+{
+  "rules": {
+    "no-unused-vars": 0,
+    "no-unused-expressions": 0,
+    "chai-friendly/no-unused-expressions": 2
+  },
+  "extends": "standard",
+  "env": {
+    "mocha": true
+  },
+  "globals": {
+    "expect": true,
+    "fixture": true,
+    "sinon": true,
+    "history": true
+  },
+  "plugins": [
+    "chai-friendly"
+  ]
+}

@@ -1,0 +1,34 @@
+.modal {
+  background-color: rgba(102, 102, 102, .5);
+  height: 100%;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  width: 100%;
+  z-index: $index-foremost;
+}
+
+.modal::before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  position: relative;
+  vertical-align: middle;
+}
+
+.modal-enter {
+  left: 0;
+  position: fixed;
+  top: 0;
+}
+
+.modal-show {
+  opacity: 1;
+}
+
+.modal-leave {
+  opacity: 0;
+}
+
+.modal-hide {
+  position: static;
+}

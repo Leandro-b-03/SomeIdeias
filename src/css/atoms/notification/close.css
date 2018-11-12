@@ -1,0 +1,11 @@
+.notification-close {
+  color: $color-text;
+  position: absolute;
+  right: .12rem;
+  top: 50%;
+  transform: translate(-50%, -.6rem);
+
+  &:hover {
+    cursor: pointer;
+  }
+}

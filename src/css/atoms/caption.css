@@ -1,0 +1,12 @@
+.caption {
+  color: $color-text;
+  font-size: 1rem;
+  line-height: 1.3rem;
+
+  .additional {
+    color: $color-default;
+    display: block;
+    font-size: .81rem;
+    margin-top: .31rem;
+  }
+}

@@ -1,0 +1,46 @@
+.input-button {
+  cursor: pointer;
+  display: inline-block;
+  padding-top: .5rem;
+  position: relative;
+  vertical-align: top;
+
+  img {
+    border-radius: .25rem;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    left: .75rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-25%);
+
+    &:checked + .label{
+      background-color: $color-primary;
+      border-color: $color-primary;
+      color: $color-neutral;
+    }
+
+    &[disabled] + .label {
+      border: .0625rem solid $color-default-light;
+      box-shadow: none;
+      color: $color-default-light;
+      cursor: not-allowed;
+    }
+  }
+
+  .label {
+    background-color: $color-neutral;
+    border: .0625rem solid $color-default;
+    border-radius: .25rem;
+    display: inline-block;
+    padding: .68rem .81rem .68rem 2rem;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      border-color: $color-primary;
+      color: $color-primary;
+    }
+  }
+}

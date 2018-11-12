@@ -1,0 +1,119 @@
+.field {
+
+  &-select {
+
+    .select {
+      padding-right: 1.5rem;
+    }
+
+    &::after {
+      right: 1.8rem;
+      top: 1.2rem;
+    }
+
+    &::before {
+      border-left: .35rem solid transparent;
+      border-right: .35rem solid transparent;
+      border-top: .35rem solid $color-black;
+      content: "";
+      height: 0;
+      pointer-events: none;
+      position: absolute;
+      right: .6rem;
+      top: 1.6rem;
+      width: 0;
+    }
+  }
+
+  .input,
+  .select,
+  .textarea {
+
+    & + .label {
+      left: .45rem;
+      position: absolute;
+      top: 1rem;
+    }
+
+    &:focus + .label {
+      font-size: .8rem;
+      transform: translateY(-130%);
+    }
+  }
+
+  .select + .label {
+    pointer-events: none;
+  }
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    margin-right: .31rem;
+
+    & + .label {
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:checked + .label{
+      color: $color-text;
+    }
+
+    &:hover + .label {
+      color: $color-primary;
+    }
+
+    &[disabled] + .label,
+    .disabled + .label {
+      color: $color-default;
+    }
+  }
+
+  .label {
+    transition: all .2s ease-in-out;
+  }
+
+  .addon.right {
+    right: .5rem;
+    top: .5rem;
+    width: auto;
+  }
+
+  &.active {
+
+    .label {
+      font-size: .8rem;
+      transform: translateY(-130%);
+    }
+
+    .input,
+    .select,
+    .textarea {
+      @mixin reset-border-color-input;
+    }
+  }
+
+  .helper {
+    display: block;
+    margin-left: .4rem;
+    margin-top: .4rem;
+  }
+
+  &.invalid {
+    @mixin field-validation danger, x;
+
+    .addon.right {
+      transform: translateX(-1rem);
+    }
+  }
+
+  &.valid {
+    @mixin field-validation success, checked;
+
+    .addon.right {
+      transform: translateX(-1rem);
+    }
+  }
+}

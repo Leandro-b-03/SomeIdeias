@@ -1,0 +1,223 @@
+doctype html
+html(lang="pt-BR")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
+    meta(name="description" content="A front end library to help you make your grass greener than the other side")
+    title #{title} | Garden
+
+    meta(property="og:image" content="http://styleguide.leroymerlin.com.br/images/banner.jpg")
+    meta(property="og:image:type" content="image/jpeg")
+    meta(property="og:image:width" content="1200")
+    meta(property="og:image:height" content="630")
+
+    link(rel="icon", href=root('images/favicon.png'), type="image/png")
+    link(rel="stylesheet", href=root('assets/style.css'))
+
+  body
+    include _partials/github-corner.jade
+    include _partials/header.jade
+
+    main.docs
+      .container
+        if sidebar
+          .col-xs-12.col-sm-4.col-md-3
+            - const css = collections[collection].filter((page) => page.section === 'css')
+            - const js = collections[collection].filter((page) => page.section === 'js')
+
+            h4.heading-4 CSS
+
+            nav.sidebar
+              each page in css
+                a.link(href="#{page.path}.html", class=title === page.title &&
+                  section === page.section ? "link-active" : undefined) #{page.title}
+
+            h4.heading-4 JS
+
+            nav.sidebar
+              each page in js
+                a.link(href="#{page.path}.html", class=title === page.title &&
+                  section === page.section ? "link-active" : undefined) #{page.title}
+        if sidebar
+          .col-xs-12.col-sm-8.col-md-9.content!= contents
+        else
+          .col-xs-12.content!= contents
+
+    include _partials/footer.jade
+
+    script(src="https://code.jquery.com/jquery-1.12.0.min.js")
+    script(src=root('assets/garden.min.js'))
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.5/clipboard.min.js")
+    script.
+      new Clipboard('[data-copy]', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+
+      var text = new Clipboard('[data-clipboard-text]');
+
+      text.on('success', function(e) {
+        if (e.trigger.classList) {
+          e.trigger.classList.add('copied');
+
+          setTimeout(function() {
+            e.trigger.classList.remove('copied');
+          }, 1000)
+        }
+      });
+
+      $('.docs').form();
+
+      $('[data-modal]').modal({
+        triggerClose: '[data-trigger="close"]',
+        triggerOpen: '[data-trigger="open"]'
+      });
+
+      $('[data-modal-small]').modal({
+        triggerOpen: '[data-trigger-small="open"]',
+        size: 'small'
+      });
+
+      $('[data-modal-medium]').modal({
+        triggerOpen: '[data-trigger-medium="open"]',
+        size: 'medium'
+      });
+
+      $('[data-modal-large]').modal({
+        triggerOpen: '[data-trigger-large="open"]',
+        size: 'large'
+      });
+      
+      $('[data-modal-history]').modal({
+        triggerOpen: '[data-trigger-history="open"]',
+        size: 'small',
+        history: true
+      });
+
+      let modalStatic = $('[data-modal-static]').modal({
+        triggerOpen: '[data-trigger-static="open"]',
+        static: true,
+        keyboard: false
+      }).data('modal');
+
+      function closeModalStatic() {
+        return modalStatic.hide();
+      }
+
+      let modalTrigger = $('[data-modal-trigger]').modal().data('modal')
+      let trigger = $('[data-trigger]');
+
+      trigger.on('click', function() {
+        modalTrigger.show();
+      });
+
+      $('[data-alert]').on('click', () => $.fn.alert());
+
+      $('[data-alert-small]').on('click', () => $.fn.alert({
+        textMessage: 'Small alert example message',
+        size: 'small'
+      }));
+
+      $('[data-alert-medium]').on('click', () => $.fn.alert({
+        textMessage: 'Medium alert example message',
+        size: 'medium'
+      }));
+
+      $('[data-alert-large]').on('click', () => $.fn.alert({
+        textMessage: 'Large alert example message',
+        size: 'large'
+      }));
+
+      $('[data-notification-temp-button]').on('click', () => {
+        const notificationContainer = $('[data-notification-temporary]')
+        const notification = notificationContainer.find('.notification')
+
+        notificationContainer.removeData('notification')
+        notification.remove()
+
+        notificationContainer.notification({
+          message: 'This is a temporary notification',
+          autoHide: true,
+          showIn: 500,
+          hideIn: 2000
+        });
+      });
+
+      $('[data-confirm]').on('click', () => $.fn.confirm((value) => value));
+
+      $('[data-confirm-small]').on('click', () => $.fn.confirm((value) => value, {
+        textMessage: 'Small confirm example message',
+        size: 'small'
+      }));
+
+      $('[data-confirm-medium]').on('click', () => $.fn.confirm((value) => value, {
+        textMessage: 'Medium confirm example message',
+        size: 'medium'
+      }));
+
+      $('[data-confirm-large]').on('click', () => $.fn.confirm((value) => value, {
+        textMessage: 'Large confirm example message',
+        size: 'large'
+      }));
+
+      $('[data-notification-dynamic]').notification({
+        message: 'This is a dynamic notification.',
+        type: 'warning'
+      });
+
+      $('[data-notification]').notification({
+        dynamic: false,
+        closeButton: '[data-close="notification"]'
+      });
+
+      $('[data-trigger="scroll"]').on('click', function() {
+        $('#scroll').scroll();
+      });
+
+      $('.toggle').collapse();
+
+      $('[data-tooltip="#top"]').tooltip();
+      $('[data-tooltip="#bottom"]').tooltip({ placement: 'bottom' });
+      $('[data-tooltip="#left"]').tooltip({ placement: 'left' });
+      $('[data-tooltip="#right"]').tooltip({ placement: 'right' });
+
+      $('[data-toggle-container]').on('click', () => {
+        const container = $('[data-container]')
+        const containerText = container.find('[data-container-text]')
+
+        container.toggleClass('example-container example-container--fluid')
+        containerText.text(container.hasClass('example-container') ? '.container' : '.container-fluid')
+      })
+
+      $('[data-scroll]').on('click', () => {
+        $('.footer').scroll();
+      })
+
+      $('[data-scroll-usage]').on('click', () => {
+        $('#usage').scroll();
+      })
+
+      $('[data-scroll-options]').on('click', () => {
+        $('#options').scroll();
+      })
+
+      $('[data-scroll-methods]').on('click', () => {
+        $('#methods').scroll();
+      })
+
+      $('[data-scroll-opening]').on('click', () => {
+        $('#opening-a-modal').scroll();
+      })
+
+      $('[data-scroll-size]').on('click', () => {
+        $('#modal-size').scroll();
+      })
+
+      $('[data-scroll-static]').on('click', () => {
+        $('#static-modal').scroll();
+      })
+
+      $('[data-scroll-history]').on('click', () => {
+        $('#history-option').scroll();
+      })

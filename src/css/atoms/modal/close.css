@@ -1,0 +1,14 @@
+.modal-close {
+  color: $color-primary;
+  float: right;
+  font-size: 1rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  transition: color .3s ease-in-out;
+
+  &:hover {
+    color: $color-primary-dark;
+    cursor: pointer;
+  }
+}

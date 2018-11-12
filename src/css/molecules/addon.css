@@ -1,0 +1,25 @@
+.addon-left {
+
+  .input {
+    padding-left: 2rem;
+  }
+
+  .input + .label {
+    left: 2rem;
+  }
+}
+
+.addon-right {
+
+  .input {
+    padding-right: 2rem;
+  }
+
+  &.valid,
+  &.invalid {
+
+    .input {
+      padding-right: 3.2rem;
+    }
+  }
+}

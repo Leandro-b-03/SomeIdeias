@@ -1,0 +1,39 @@
+@import "../atoms/price.css";
+
+.price-tag {
+  text-align: center;
+}
+
+.promotional {
+  background-color: $color-promotional;
+  border-radius: .25rem;
+  color: $color-text-promotional;
+  overflow: hidden;
+  padding-bottom: .5rem;
+  padding-left: .3125rem;
+  padding-right: .3125rem;
+  padding-top: .5rem;
+  position: relative;
+
+  .from-price {
+    color: $color-text;
+    font-size: .8rem;
+    margin-bottom: .3rem;
+
+    .price {
+      text-decoration: line-through;
+    }
+
+    .price-decimal {
+      vertical-align: baseline;
+    }
+
+    .price-currency,
+    .price-integer,
+    .price-decimal {
+      font-size: inherit;
+      font-weight: normal;
+      text-decoration: line-through;
+    }
+  }
+}

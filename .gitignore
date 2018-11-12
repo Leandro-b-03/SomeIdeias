@@ -1,0 +1,11 @@
+*.log
+*.swp
+package-lock.json
+yarn.lock
+node_modules/
+public/
+coverage/
+**/.DS_Store
+.publish/
+src/css/atoms/glyph.css
+dist/js/*.map

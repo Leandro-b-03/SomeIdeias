@@ -1,0 +1,31 @@
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: .8rem;
+  width: 100%;
+
+  td, th {
+    padding: .5rem;
+    text-align: left;
+  }
+}
+
+.table-zebra tbody tr:nth-child(odd) {
+  background-color: $color-default-lighter;
+}
+
+.table-bordered {
+  border: .0625rem solid $color-default-light;
+  border-radius: .18rem;
+
+  th, td {
+    border-bottom: .0625rem solid $color-default-light;
+  }
+
+  tbody tr:last-child {
+
+    th, td {
+      border: 0;
+    }
+  }
+}
