@@ -1,10 +1,11 @@
 ---
 title: Home
-body_classes: title-center title-h1h2
+body_classes: 'title-center title-h1h2'
+creator: leandro_b
 ---
 
-# Say Hello to Grav!
-## installation successful...
+# Say Hello to Printi Doc Station
+## All the Printi's documents sleeps here
 
 Congratulations! You have installed the **Base Grav Package** that provides a **simple page** and the default **Quark** theme to get you started.
 
